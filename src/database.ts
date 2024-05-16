@@ -1,9 +1,9 @@
 import { knex as setupKnex, Knex } from 'knex'
 
-export const knexConfig: Knex.Config = {
+export const config: Knex.Config = {
   client: 'sqlite',
   connection: {
-    filename: './tmp/app.db', // relative path to root of project
+    filename: './db/app.db', // relative path to root of project
   },
   useNullAsDefault: true,
   migrations: {
@@ -12,4 +12,4 @@ export const knexConfig: Knex.Config = {
   },
 }
 
-export const knex = setupKnex(knexConfig)
+export const knex = setupKnex(config)

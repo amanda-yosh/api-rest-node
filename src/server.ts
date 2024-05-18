@@ -5,7 +5,7 @@ import { transactionRoutes } from './routes/transactions'
 const app = fastify()
 
 // a ordem dos plugins importa
-app.register(transactionRoutes)
+app.register(transactionRoutes, { prefix: '/transactions' })
 
 app
   .listen({

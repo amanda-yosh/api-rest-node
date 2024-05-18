@@ -40,10 +40,22 @@ export async function transactionRoutes(app: FastifyInstance) {
 
     const { title, amount, type } = createTransactionBodySchema.parse(req.body)
 
+    let sessionId = req.cookies.sessionId
+
+    if (!sessionId) {
+      sessionId = randomUUID()
+
+      res.cookie('sessionId', sessionId, {
+        path: '/', // qualquer rota do domínio pode acessar o cookie
+        maxAge: 60 * 60 * 24 * 7, // 7 dias
+      })
+    }
+
     await knex('transactions').insert({
       id: randomUUID(),
       title,
       amount: type === 'credit' ? amount : amount * -1,
+      session_id: sessionId,
     })
 
     // para criação de recurso, o status é 201 - recurso criado com sucesso

@@ -36,3 +36,8 @@ $ npm run knex -- migrate:rollback
 ## Requisitos não funcionais
 
 - [ ] quais?
+
+
+### cookies
+
+- forma de manter contexto entre requisições

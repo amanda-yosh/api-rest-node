@@ -5,6 +5,24 @@ import { randomUUID } from 'node:crypto'
 
 // todo plugin do fastify precisa ser async
 export async function transactionRoutes(app: FastifyInstance) {
+  app.get('/', async () => {
+    const transactions = await knex('transactions').select('*')
+
+    return { transactions }
+  })
+
+  app.get('/:id', async (req) => {
+    const getTransactionParmasSchema = z.object({
+      id: z.string().uuid(),
+    })
+
+    const { id } = getTransactionParmasSchema.parse(req.params)
+
+    const transaction = await knex('transactions').where('id', id).first()
+
+    return { transaction }
+  })
+
   app.post('/', async (req, res) => {
     const createTransactionBodySchema = z.object({
       title: z.string(),
@@ -23,9 +41,5 @@ export async function transactionRoutes(app: FastifyInstance) {
     // para criação de recurso, o status é 201 - recurso criado com sucesso
 
     return res.status(201).send()
-  })
-  app.get('/', async () => {
-    const transactions = await knex('transactions').select('*')
-    return transactions
   })
 }

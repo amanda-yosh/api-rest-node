@@ -6,6 +6,12 @@ import { checkSessionIdExists } from '../middlewares/check-session-id-exists'
 
 // todo plugin do fastify precisa ser async
 export async function transactionRoutes(app: FastifyInstance) {
+  app.addHook('preHandler', async () => {
+    console.log(
+      'preHandler hook to make global validations for /transactions route',
+    )
+  })
+
   app.get(
     '/',
     {

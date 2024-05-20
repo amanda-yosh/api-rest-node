@@ -41,3 +41,9 @@ $ npm run knex -- migrate:rollback
 ### cookies
 
 - forma de manter contexto entre requisições
+
+## Testes
+
+- unitários: testa uma unidade da aplicação, uma unidade isolada da aplicação;
+- integração: testa a comunicação entre duas ou mais unidades, ex.: uma função que chama outra função;
+- e2e - ponta a ponta: testes que simulam um usuário operando a aplicação.

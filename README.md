@@ -29,14 +29,13 @@ $ npm run knex -- migrate:rollback
 
 ## Regras de negócio
 
-- [ ] a transação pode ser do tipo crédito que somará ao valor total ou débito que subtrairá.
-- [ ] deve ser possível identificarmos o usuário entre as requisições;
-- [ ] o usuário só pode visualizar transações as quais ele criou.
+- [x] a transação pode ser do tipo crédito que somará ao valor total ou débito que subtrairá.
+- [x] deve ser possível identificarmos o usuário entre as requisições; (através do session_id)
+- [x] o usuário só pode visualizar transações as quais ele criou.
 
 ## Requisitos não funcionais
 
 - [ ] quais?
-
 
 ### cookies
 

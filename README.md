@@ -1,3 +1,7 @@
+# API REST with NODE
+
+Esta aplicação é um web service
+
 ### criando uma migration
 ```
 $ npm run knex -- migrate:make create-documents
@@ -48,3 +52,9 @@ $ npm run knex -- migrate:rollback
 - e2e - ponta a ponta: testes que simulam um usuário operando a aplicação.
 
 Obs.: a variável `NODE_ENV` é automaticamente preenchida pelo vitest com o valor test.
+
+## Como deployar o código?
+
+0. uma forma seria adicionar o `rootDir` e o `outDir` no tsconfig e rodar o `npx tsc`. Mas ele criará arquivos JS por toda aplicação.
+
+1. Preciso transformar o código de TS para JS. Utilizando o tsup para fazer o processo de build (de TS para JS).
